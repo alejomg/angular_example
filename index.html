@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+	<head>
+		<meta charset="utf-8">
+		<title>My Angular File</title>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+	</head>
+	<body ng-controller="controlador">
+
+		<table border="1">	
+			<tr ng-repeat="factura in listaFacturas">	
+				<td>{{factura.id}}</td>
+				<td>{{factura.concepto}}</td>
+				<td>{{factura.importe}}</td><!--  | currency filtro para transformar los datos -->
+			</tr>
+		</table>
+
+		<script type="text/javascript">
+			var app = angular.module("myApp", []);
+
+			app.controller("controlador",
+			function($scope) {
+				var factura1 = {"id":1, "concepto":"mac", "importe":1410};
+				var factura2 = {"id":2, "concepto":"pc", "importe":810};
+
+				var listaFacturas = [];
+				listaFacturas.push(factura1);
+				listaFacturas.push(factura2);
+
+				$scope.listaFacturas = listaFacturas;
+			});
+  
+		</script>
+
+	</body>
+</html>
